@@ -45,6 +45,7 @@ help:
 	@echo "  check-deps     - Check if dependencies are installed"
 	@echo "  extract-csv    - Extract table data to CSV"
 	@echo "  analyze        - Analyze table structure"
+	@echo "  build-exe      - Build Windows executable (Windows only)"
 	@echo ""
 	@echo "Usage examples:"
 	@echo "  make setup                    - Setup everything"
@@ -199,6 +200,17 @@ format:
 lint:
 	@echo "Running linting..."
 	flake8 pdf_text_extractor.py
+
+# Build Windows executable
+.PHONY: build-exe
+build-exe:
+ifeq ($(DETECTED_OS),Windows)
+	@echo "Building Windows executable..."
+	$(PYTHON) build_simple.py
+else
+	@echo "Windows executable build is only available on Windows"
+	@echo "Current OS: $(DETECTED_OS)"
+endif
 
 # Show system info
 .PHONY: info

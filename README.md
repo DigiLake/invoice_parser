@@ -118,4 +118,38 @@ print(f"Found {analysis['total_rows']} table rows")
 - PyMuPDF (fitz)
 - pytesseract
 - Pillow (PIL)
-- Tesseract OCR engine# invoice_parser
+- pandas
+- Tesseract OCR engine
+
+## Windows Executable
+
+Want to use this without installing Python? We can build a Windows executable:
+
+### Build Executable (Windows only)
+
+1. **Simple build:**
+   ```cmd
+   python build_simple.py
+   ```
+
+2. **Full featured build:**
+   ```cmd
+   build_windows.bat
+   ```
+
+3. **Find your executable in:**
+   ```
+   dist/pdf-text-extractor.exe
+   ```
+
+### Use Executable
+
+```cmd
+# Extract table to CSV (auto-names as invoice.csv)
+pdf-text-extractor.exe "invoice.pdf" --csv
+
+# Analyze table structure
+pdf-text-extractor.exe "invoice.pdf" --analyze
+```
+
+See [BUILD_WINDOWS_EXE.md](BUILD_WINDOWS_EXE.md) for detailed instructions.
